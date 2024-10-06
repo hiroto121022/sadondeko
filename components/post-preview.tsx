@@ -18,7 +18,7 @@ export default function PostPreview({
           <CoverImage title={title} coverImage={coverImage} slug={slug} />
         )}
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
+      <h3 className="text-xl mb-3 leading-snug">
         <Link
           href={`/posts/${slug}`}
           className="hover:underline"
@@ -29,10 +29,9 @@ export default function PostPreview({
         <Date dateString={date} />
       </div>
       <div
-        className="text-lg leading-relaxed mb-4"
+        className="text-base leading-relaxed mb-4"
         dangerouslySetInnerHTML={{ __html: excerpt }}
       />
-      <Avatar author={author} />
     </div>
   );
 }

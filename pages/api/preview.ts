@@ -22,7 +22,7 @@ export default async function preview(
 
   // If the post doesn't exist prevent preview mode from being enabled
   if (!post) {
-    return res.status(401).json({ message: "Post not found" });
+    return res.status(401).json({ message: "ページが見つかりませんでした。" });
   }
 
   // Enable Preview Mode by setting the cookies

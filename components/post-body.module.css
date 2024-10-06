@@ -2,7 +2,6 @@
   @apply text-lg leading-relaxed;
 }
 
-.content p,
 .content ul,
 .content ol,
 .content blockquote {
@@ -19,7 +18,7 @@
 }
 
 .content ul {
-  @apply list-disc;
+  @apply list-disc ml-4;
 }
 
 .content ol {
@@ -35,12 +34,24 @@
   list-style: circle;
 }
 
-.content h2 {
+.content h1 {
   @apply text-3xl mt-12 mb-4 leading-snug;
 }
 
+.content h2 {
+  @apply text-2xl mt-12 mb-4 p-2 border-b border-skyblue bg-skybluebg leading-snug;
+}
+
 .content h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-xl mt-8 mb-4 p-4 border-b border-skyblue leading-snug;
+}
+
+.content h3::before {
+  content: "\f621"; /* FontAwesome のチェックマークの Unicode */
+  font-family: "Font Awesome 5 Free"; /* FontAwesome のフォントファミリーを指定 */
+  font-weight: 900; /* フォントの太さを設定 */
+  color: #39585b; /* チェックマークの色を設定 */
+  margin-right: 8px; /* チェックマークとテキストの間隔を調整 */
 }
 
 .content h4 {
@@ -55,6 +66,14 @@
   @apply text-sm;
 }
 
+.hcb_wrap div {
+  @apply bg-black text-2xl;
+}
+
+.content div pre {
+  @apply bg-slate-800 text-white;
+}
+
 .content figcaption {
   @apply text-center text-sm;
 }
@@ -67,10 +86,28 @@
   @apply mt-0;
 }
 
+.content p {
+  @apply text-lg ml-2 my-4 leading-loose;
+}
+
 .content blockquote cite {
   @apply not-italic;
 }
 
 .content audio {
   @apply w-full;
+}
+
+.content img {
+  margin: auto;
+  width: 90%;
+  max-width: 800px;
+}
+
+.content table {
+  @apply w-full text-sm text-slate-800 dark:text-gray-400;
+}
+
+.content tr {
+  @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700;
 }

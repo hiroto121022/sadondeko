@@ -15,20 +15,21 @@ interface Props {
 export default function CoverImage({ title, coverImage, slug }: Props) {
   const image = (
     <Image
-      width={2000}
-      height={1000}
       alt={`Cover Image for ${title}`}
       src={coverImage?.node.sourceUrl}
-      className={cn("shadow-small", {
+      className={cn("object-cover shadow-small", {
         "hover:shadow-medium transition-shadow duration-200": slug,
       })}
+      fill
     />
   );
   return (
     <div className="sm:mx-0">
       {slug ? (
         <Link href={`/posts/${slug}`} aria-label={title}>
-          {image}
+          <div className="relative aspect-w-3 aspect-h-2">
+            {image}
+          </div>
         </Link>
       ) : (
         image
