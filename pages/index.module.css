@@ -12,5 +12,5 @@
   @apply relative w-[846px] h-[300px] top-[40%] left-[33%] translate-x-[-50%] translate-y-[-50%] max-lg:w-[58.7vw] max-lg:h-[26.6vw] max-md:w-[87.2vw] max-md:h-[39.7vw] max-md:top-[40vw] max-md:left-0 max-md:transform-none max-md:translate-x-[0%] max-md:translate-y-[0%];
 }
 .text_area {
-  @apply absolute w-[846px] left-0 top-[75vh] max-lg:w-[70.88vw] max-lg:left-[initial] max-md:w-full max-md:top-[78vw] bg-white/40;
+  @apply absolute w-[846px] left-0 top-[65vh] max-lg:w-[70.88vw] max-lg:left-[initial] max-md:w-full max-md:top-[68vw] bg-white/40;
 }

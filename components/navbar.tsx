@@ -73,7 +73,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="z-10 flex justify-between items-center w-full md:h-16 h-12 fixed top-0 md:px-4 text-white bg-sadondeko nav">
+    <div className="z-50 flex justify-between items-center w-full md:h-16 h-12 sticky top-0 md:px-4 text-white bg-sadondeko nav">
       <div
         onClick={() => setNav(!nav)}
         className="cursor-pointer pr-4 z-10 pl-2 text-white md:hidden"

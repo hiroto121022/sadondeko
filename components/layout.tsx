@@ -10,12 +10,12 @@ export default function Layout({ preview, children }) {
   return (
     <>
       <Meta />
+      <Navbar />
       <div className="min-h-screen">
-        <Navbar />
         <main className="relative w-full">{children}</main>
-        <FooterButton/>
       </div>
       <Footer />
+      <FooterButton/>
     </>
   );
 }

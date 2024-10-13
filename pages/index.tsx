@@ -33,7 +33,7 @@ export default function Index({ allPosts: { edges }, preview }) {
       src="/favicon/nft.png"
       width={1000}
       height={1000}
-      className="absolute inset-0 h-full max-md:w-full object-left left-[42vw] max-md:left-[25%] object-cover top-12 md:top-16 opacity-80"
+      className="absolute inset-0 h-full max-md:w-full object-left left-[42vw] max-md:left-[25%] object-cover opacity-80"
     />
   );
 
@@ -159,28 +159,56 @@ export default function Index({ allPosts: { edges }, preview }) {
                 デジタルアート（NFT）の特徴
               </h2>
               <h3 className="mt-6 ml-4 text-2xl md:text-3xl leading-relaxed md:pr-8">
-                1．3段階の<span className="font-bold">進化</span>があります
+                実際に佐渡に赴くことで、動きと音が追加され<span className="font-bold">アートが進化</span>します。
               </h3>
+        <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+          <span className="inline-block">実際に</span>
+          <span className="inline-block">佐渡に</span>
+          <span className="inline-block">訪れることで、</span>
+          <span className="inline-block">動きと</span>
+          <span className="inline-block">音が</span>
+          <span className="inline-block">追加され</span>
+          <span className="inline-block">アートが</span>
+        </p>
               <img 
-                src="https://wordpress.sadondeko.com/wp-content/uploads/2024/07/%E3%81%95%E3%81%A9%E3%82%93%E3%81%A7%E3%81%93%E3%82%A2%E3%83%BC%E3%83%88-34.png"
+                src="https://wordpress.sadondeko.com/wp-content/uploads/2024/10/画像5.png"
                 alt="進化"
                 className="mx-auto w-[80%]"
               />
-              <h3 className="mt-6 ml-4 text-2xl md:text-3xl leading-relaxed md:pr-8">
-                2．佐渡での活動の<span className="font-bold">許可証</span>になります
-              </h3>
-              <p className="mt-6 ml-8 text-xl md:text-2xl leading-relaxed md:pr-8">
-                  <span className="inline-block">農産物の購入や</span>
-                  <span className="inline-block">祭りの参加など、</span>
-                  <span className="inline-block">佐渡の方々と</span>
-                  <span className="inline-block">関わる機会を</span>
-                  <span className="inline-block">得ることができます。</span>
-                  <span className="inline-block">進化するほど、</span>
-                  <span className="inline-block">佐渡の方々と</span>
-                  <span className="inline-block">より深い関係を</span>
-                  <span className="inline-block">築くことが</span>
-                  <span className="inline-block">できます。</span>
-              </p>
+      <h2 className="mb-8 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
+          デジタルアートを所有することで<span className="font-bold">あなたが鬼太鼓に</span>貢献できること
+      </h2>
+        <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+          <span className="inline-block">①鬼太鼓アートを</span>
+          <span className="inline-block">友達に</span>
+          <span className="inline-block">共有して、</span>
+          <span className="inline-block">鬼太鼓が</span>
+          <span className="inline-block">日本中・</span>
+          <span className="inline-block">世界中に</span>
+          <span className="inline-block">広がる</span>
+        </p>
+        <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+          <span className="inline-block">②鬼太鼓アートを</span>
+          <span className="inline-block">きっかけに</span>
+          <span className="inline-block">実際に</span>
+          <span className="inline-block">鬼太鼓を</span>
+          <span className="inline-block">見に行くことで、</span>
+          <span className="inline-block">鬼太鼓の</span>
+          <span className="inline-block">祭りが</span>
+          <span className="inline-block">盛り上がる</span>
+        </p>
+        <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+           <span className="inline-block">③たとえ鬼太鼓が</span>
+           <span className="inline-block">途絶えてしまった</span>
+           <span className="inline-block">としても、</span>
+           <span className="inline-block">鬼太鼓の姿を</span>
+           <span className="inline-block">再現した</span>
+           <span className="inline-block">アートを</span>
+           <span className="inline-block">あなたが</span>
+           <span className="inline-block">持っているだけで、</span>
+           <span className="inline-block"><span className="font-bold">伝統文化が</span></span>
+           <span className="inline-block"><span className="font-bold">受け継がれていく。</span></span>
+        </p>
               <div className="flex justify-center mt-10">
                 <a href="/about" className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
                     <FaProjectDiagram size={30} className="text-sadondeko" />

@@ -50,7 +50,7 @@ const FooterButton = () => {
   ];
 
   return (
-    <div className="z-9 md:hidden flex justify-between items-center w-full h-12 fixed bottom-0 px-4 text-white bg-sadondeko nav">
+    <div className="z-9 md:hidden flex justify-between items-center w-full h-12 sticky bottom-0 px-4 text-white bg-sadondeko nav">
       <div className="md:hidden hover:bg-skyblue h-12 px-2">
         <Link href="https://sadondeko.com/news" className="flex flex-col justify-center items-center hover:text-black py-1">
           <FaNewspaper size={30} />

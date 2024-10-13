@@ -135,89 +135,50 @@ export default function ABOUT({ allPosts: { edges }, preview }) {
           <h2 className="mb-8 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
             デジタルアートの特徴
           </h2>
-          <h3 className="mt-6 ml-4 text-2xl md:text-3xl leading-relaxed md:pr-8">
-            佐渡を訪れることで、<span className="font-bold">デジタルアートが進化</span>がします。
-          </h3>
           <img 
             src="https://wordpress.sadondeko.com/wp-content/uploads/2024/10/画像5.png"
             alt="進化"
-            className="mx-auto w-[80%]"
+            className="mx-auto w-[100%]"
           />
-          <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">実際に佐渡を訪れ、鬼太鼓やそれを営む佐渡の皆さんの魅力に触れる一つのきっかけとなれるデジタルアートです。<ruby>鬼太鼓<rt>おんでこ</rt></ruby>アートが進化します。(佐渡に訪れないと進化することができません。)</p>
-          <p className="px-8 mb-6 leading-10 text-lg md:text-xl">＊現在は進化バージョン「アート+動き」を制作中です。</p>
-          <h3 className="mt-10 mb-6 ml-4 text-2xl md:text-3xl leading-relaxed md:pr-8">
-            デジタルアートを所有することで<span className="font-bold">あなたが鬼太鼓に</span>貢献できること
-          </h3>
-          <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">①鬼太鼓アートとその進化がきっかけで、あなたが鬼太鼓の祭りに行くことで、祭りが盛り上がる</p>
-          <p className="px-8 mb-6 leading-10 text-lg md:text-2xl">②鬼太鼓アートを友達に共有して、鬼太鼓が日本中、世界中に広がる</p>
-          <p className="px-8 mb-6 leading-10 text-lg md:text-2xl">③万が一鬼太鼓がなくなってしまっても、実際同様の風貌で舞を踊る鬼太鼓アートをあなたが所有しているだけで、伝統文化が繋がれていく</p>
-          <p className="px-8 mb-6 leading-10 text-lg md:text-xl">＊特徴を表にまとめました↓（現在は鷲崎村のみアート販売しています）</p>
-          <div className="relative overflow-hidden">
-            <table className="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400 table-fixd">
-              <thead className="text-base md:text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th scope="col" className="px-6 py-3 w-1/3">
-                    段階
-                  </th>
-                  <th scope="col" className="px-6 py-3 w-1/3">
-                    NFTアートの種類
-                  </th>
-                  <th scope="col" className="px-6 py-3 w-1/3">
-                    参加できる活動
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-1/3">
-                    おんでこ見習い
-                  </th>
-                  <td className="px-6 py-4 w-1/3">
-                    ドット絵
-                  </td>
-                  <td className="px-6 py-4 w-1/3">
-                    鷲崎の農産物販売を購入できる
-                  </td>
-                </tr>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-1/3">
-                    おんでこ特待生
-                  </th>
-                  <td className="px-6 py-4 w-1/3">
-                    アート
-                  </td>
-                  <td className="px-6 py-4 w-1/3">
-                    鷲崎に来てNFTを進化できる
-                  </td>
-                </tr>
-                <tr className="bg-white dark:bg-gray-800">
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-1/3">
-                    おんでこ名人
-                  </th>
-                  <td className="px-6 py-4 w-1/3">
-                    アート+動き+音
-                  </td>
-                  <td className="px-6 py-4 w-1/3">
-                    お手伝いとして鬼太鼓の祭りに参加できる
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <p className="px-8 mb-6 leading-10 text-lg md:text-xl">＊参加できる活動は変更する場合があります。</p>
-          </div>
-        </section>
-        <section className="mt-44">
-          <h1 className="text-center text-4xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
-            さどんでこNFTプロジェクトのNFTアートを購入してみませんか？
-          </h1>
-          <div className="flex justify-center mt-10">
-            <a href="/nft" className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
-                <FaImage size={30} className="text-sadondeko" />
-                <span className="">NFT購入へ</span>
-                <FaArrowRight size={30} className="text-sadondeko" />
-            </a> 
-          </div>
-        </section>
+          <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+            佐渡を訪れることで、<span className="font-bold">デジタルアートが進化</span>がします。「現地に行くことでアートに音と動きが付く面白さ」をきっかけに、実際に佐渡を訪れ鬼太鼓やそれを営む佐渡の皆さんの魅力に触れていただければ嬉しいです。
+          </p>
+          <p className="px-8 mb-6 leading-10 text-lg md:text-xl">＊現在は進化バージョン「おんでこ名人」を制作中です。</p>
+      <h2 className="mb-8 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
+          デジタルアートを所有することで<span className="font-bold">あなたが鬼太鼓に</span>貢献できること
+      </h2>
+        <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+          <span className="inline-block">①鬼太鼓アートを</span>
+          <span className="inline-block">友達に</span>
+          <span className="inline-block">共有して、</span>
+          <span className="inline-block">鬼太鼓が</span>
+          <span className="inline-block">日本中・</span>
+          <span className="inline-block">世界中に</span>
+          <span className="inline-block">広がる</span>
+        </p>
+        <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+          <span className="inline-block">②鬼太鼓アートを</span>
+          <span className="inline-block">きっかけに</span>
+          <span className="inline-block">実際に</span>
+          <span className="inline-block">鬼太鼓を</span>
+          <span className="inline-block">見に行くことで、</span>
+          <span className="inline-block">鬼太鼓の</span>
+          <span className="inline-block">祭りが</span>
+          <span className="inline-block">盛り上がる</span>
+        </p>
+        <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+           <span className="inline-block">③たとえ鬼太鼓が</span>
+           <span className="inline-block">途絶えてしまった</span>
+           <span className="inline-block">としても、</span>
+           <span className="inline-block">鬼太鼓の姿を</span>
+           <span className="inline-block">再現した</span>
+           <span className="inline-block">アートを</span>
+           <span className="inline-block">あなたが</span>
+           <span className="inline-block">持っているだけで、</span>
+           <span className="inline-block"><span className="font-bold">伝統文化が</span></span>
+           <span className="inline-block"><span className="font-bold">受け継がれていく。</span></span>
+        </p>
+          </section>
 
       </Container>
     </Layout>
