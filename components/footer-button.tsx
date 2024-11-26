@@ -1,11 +1,28 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { FaNewspaper, FaProjectDiagram, FaMoneyBill, FaStore, FaRegFlag } from "react-icons/fa";
+import { FaNewspaper, FaProjectDiagram, FaMoneyBill, FaStore, FaRegFlag, FaUsers  } from "react-icons/fa";
+import en from "../locales/en";
+import ja from "../locales/ja";
+import { useRouter } from "next/router";
+
+export const useLocale = () => {
+  const { locale } = useRouter();
+  const t = locale === "en" ? en : ja;
+  return { locale, t };
+}
 
 const FooterButton = () => {
+  const router = useRouter();
+  const { locale, locales, pathname, query, asPath } = router;
   const [nav, setNav] = useState(false);
   const [show, setShow] = useState(false);
   const [isClient, setIsClient] = useState(false);
+
+  const { t } = useLocale()
+
+  const switchLanguage = (newLocale) => {
+    router.push({ pathname, query }, asPath, { locale: newLocale });
+  };
 
   useEffect(() => {
     if (nav) {
@@ -24,62 +41,49 @@ const FooterButton = () => {
   const links = [
     {
       id: 1,
-      link: "/news",
-      name: "お知らせ",
+      link: "/",
+      name: t.HOME,
     },
     {
       id: 2,
       link: "/about",
-      name: "プロジェクト説明",
+      name: t.ABOUT,
     },
     {
       id: 3,
-      link: "/nft",
-      name: "NFT購入",
-    },
-    {
-      id: 4,
-      link: "/shop",
-      name: "農産物購入",
-    },
-    {
-      id: 5,
-      link: "/profile",
-      name: "プロフィール",
+      link: "/mypage",
+      name: t.MYPAGE,
     },
   ];
 
   return (
     <div className="z-9 md:hidden flex justify-between items-center w-full h-12 sticky bottom-0 px-4 text-white bg-sadondeko nav">
       <div className="md:hidden hover:bg-skyblue h-12 px-2">
-        <Link href="https://sadondeko.com/news" className="flex flex-col justify-center items-center hover:text-black py-1">
-          <FaNewspaper size={30} />
-          <div className="text-[9px]">お知らせ</div>
-        </Link>
-      </div>
-      <div className="md:hidden hover:bg-skyblue h-12 px-2">
-        <Link href="https://sadondeko.com/about" className="flex flex-col justify-center items-center hover:text-black py-1">
+        <Link href="/about" className="flex flex-col justify-center items-center hover:text-black py-1">
           <FaProjectDiagram size={30} />
-          <div className="text-[9px]">プロジェクト説明</div>
+          <div className="text-[9px]">{t.ABOUT}</div>
         </Link>
       </div>
       <div className="md:hidden hover:bg-skyblue h-12 px-2">
-        <Link href="https://sadondeko.com/nft" className="flex flex-col justify-center items-center hover:text-black py-1">
-          <FaMoneyBill size={30} />
-          <div className="text-[9px]">NFT購入</div>
+        <Link href="/mypage" className="flex flex-col justify-center items-center hover:text-black py-1">
+          <FaUsers size={30} />
+          <div className="text-[9px]">{t.MYPAGE}</div>
         </Link>
       </div>
-      <div className="md:hidden hover:bg-skyblue h-12 px-2">
-        <Link href="https://sadondeko.com/shop" className="flex flex-col justify-center items-center hover:text-black py-1">
-          <FaStore size={30} />
-          <div className="text-[9px]">農産物購入</div>
-        </Link>
-      </div>
-      <div className="md:hidden hover:bg-skyblue h-12 px-2">
-        <Link href="https://sadondeko.com" className="flex flex-col justify-center items-center hover:text-black py-1">
-          <FaRegFlag size={30} />
-          <div className="text-[9px]">日本語/英語</div>
-        </Link>
+      <div className="flex items-center gap-2 md:hidden h-12 px-2">
+        {locales.map((lng) => (
+            <button
+              key={lng}
+              onClick={() => switchLanguage(lng)}
+              className={`px-2 py-1 rounded ${
+                lng === locale
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+              }`}
+            >
+              {lng.toUpperCase()}
+            </button>
+          ))}
       </div>
     </div>
   );

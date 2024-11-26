@@ -64,7 +64,7 @@ export default function Post({ post, posts, preview }) {
                 />
                 <meta
                   property="og:url"
-                  content="https://nft.sadondeko.com/news/"
+                  content="https://sadondeko.com/news/"
                 />
                 <meta
                   property="og:site_name"
@@ -88,7 +88,7 @@ export default function Post({ post, posts, preview }) {
                 />
                 <meta
                   property="twitter:url"
-                  content="https://nft.sadondeko.com/news/"
+                  content="https://sadondeko.com/news/"
                 />
                 <meta
                   property="twitter:image"
@@ -96,7 +96,7 @@ export default function Post({ post, posts, preview }) {
                 />
                 <meta
                   property="twitter:domain"
-                  content="nft.sadondeko.com"
+                  content="sadondeko.com"
                 />
               </Head>
               <PostHeader

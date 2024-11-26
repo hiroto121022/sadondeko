@@ -1,31 +1,46 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { FaBars, FaTimes, FaUsers } from "react-icons/fa";
 import { client } from "../lib/client";
 import { inAppWallet, createWallet } from "thirdweb/wallets";
 import { ConnectButton } from "thirdweb/react";
+import en from "../locales/en";
+import ja from "../locales/ja";
 
 const wallets = [
   inAppWallet({
     auth: {
       options: [
         "google",
-        "phone",
-        "x",
-        "line",
-        "facebook",
-        "email",
         "discord",
-        "passkey",
+        "email",
+        "x",
+        "phone",
+        "line",
+        "apple",
+        "facebook",
+        "telegram",
       ],
     },
   }),
   createWallet("io.metamask"),
   createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("io.rabby"),
+  createWallet("io.zerion.wallet"),
 ];
 
+export const useLocale = () => {
+  const { locale } = useRouter();
+  const t = locale === "en" ? en : ja;
+  return { locale, t };
+}
+
 const Navbar = () => {
+  const router = useRouter();
+  const { locale, locales, pathname, query, asPath } = router;
   const [nav, setNav] = useState(false);
   const [show, setShow] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -34,8 +49,7 @@ const Navbar = () => {
     if (nav) {
       setShow(true);
     } else {
-      // アニメーションを適用する前に少し待つ
-      const timer = setTimeout(() => setShow(false), 490); // 500msはアニメーションの長さ
+      const timer = setTimeout(() => setShow(false), 490); // アニメーション用タイマー
       return () => clearTimeout(timer);
     }
   }, [nav]);
@@ -44,36 +58,32 @@ const Navbar = () => {
     setIsClient(true);
   }, []);
 
+  const { t } = useLocale()
+
   const links = [
     {
       id: 1,
-      link: "/news",
-      name: "お知らせ",
+      link: "/",
+      name: t.HOME,
     },
     {
       id: 2,
       link: "/about",
-      name: "プロジェクト説明",
+      name: t.ABOUT,
     },
     {
       id: 3,
-      link: "/nft",
-      name: "NFT購入",
-    },
-    {
-      id: 4,
-      link: "/shop",
-      name: "農産物購入",
-    },
-    {
-      id: 5,
-      link: "/profile",
-      name: "プロフィール",
+      link: "/mypage",
+      name: t.MYPAGE,
     },
   ];
 
+  const switchLanguage = (newLocale) => {
+    router.push({ pathname, query }, asPath, { locale: newLocale });
+  };
+
   return (
-    <div className="z-50 flex justify-between items-center w-full md:h-16 h-12 sticky top-0 md:px-4 text-white bg-sadondeko nav">
+    <div className="z-50 flex justify-between items-center w-full h-16 sticky top-0 md:px-4 text-white bg-sadondeko nav">
       <div
         onClick={() => setNav(!nav)}
         className="cursor-pointer pr-4 z-10 pl-2 text-white md:hidden"
@@ -96,12 +106,9 @@ const Navbar = () => {
         ))}
       </ul>
       <div>
-        {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
         <h1 className="text-5xl font-signature md:ml-2">
-          <a
-            className="link-underline link-underline-black"
-            href="https://sadondeko.com"
-            rel="noreferrer"
+          <Link
+            href="/"
           >
             <Image
               src="/favicon/sadondeko.png"
@@ -110,14 +117,15 @@ const Navbar = () => {
               height={60}
               className=""
             />
-          </a>
+          </Link>
         </h1>
       </div>
-      <div className="md:hidden hover:bg-skyblue h-12 px-2">
-        <Link href="/profile" className="flex flex-col justify-center items-center hover:text-black">
-          <FaUsers size={30} />
-          <div className="text-[9px]">プロフィール</div>
-        </Link>
+      <div className="md:hidden h-16 px-2 flex items-center">
+        <ConnectButton
+          client={client}
+          wallets={wallets}
+          connectModal={{ size: "compact" }}
+        />
       </div>
       <ul className="hidden md:flex items-center">
         {links.map(({ id, link, name }) => (
@@ -128,16 +136,28 @@ const Navbar = () => {
             <Link href={link}>{name}</Link>
           </li>
         ))}
-        <li
-          className="nav-links pl-3 cursor-pointer capitalize font-medium text-white hover:text-white duration-200 link-underline"
-        >
+        <li className="nav-links pl-3">
           <ConnectButton
             client={client}
             wallets={wallets}
-            connectButton={{ label: "ウォレットを接続" }}
             connectModal={{ size: "compact" }}
-            locale={"ja_JP"}
           />
+        </li>
+        {/* 言語切り替えボタン */}
+        <li className="flex items-center gap-2 px-3">
+          {locales.map((lng) => (
+            <button
+              key={lng}
+              onClick={() => switchLanguage(lng)}
+              className={`px-2 py-1 rounded ${
+                lng === locale
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+              }`}
+            >
+              {lng.toUpperCase()}
+            </button>
+          ))}
         </li>
       </ul>
     </div>

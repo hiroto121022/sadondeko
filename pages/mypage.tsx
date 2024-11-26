@@ -5,7 +5,7 @@ import { client } from "../lib/client";
 import { contract } from "../lib/contract";
 import { defineChain } from "thirdweb/chains";
 import { getNFT } from "thirdweb/extensions/erc1155";
-import { createWallet } from "thirdweb/wallets";
+import { inAppWallet, createWallet } from "thirdweb/wallets";
 import { ConnectButton, TransactionButton, useReadContract, useActiveAccount, MediaRenderer } from "thirdweb/react";
 import { getContractMetadata } from "thirdweb/extensions/common";
 import { getClaimConditionById, claimTo } from "thirdweb/extensions/erc1155";
@@ -15,11 +15,44 @@ import Container from "../components/container";
 import Layout from "../components/layout";
 import { motion } from 'framer-motion'
 import { getAllPostsForHome } from "../lib/api";
+import { useRouter } from 'next/router'
+import en from "../locales/en";
+import ja from "../locales/ja";
+
+export const useLocale = () => {
+  const { locale } = useRouter();
+  const t = locale === "en" ? en : ja;
+  return { locale, t };
+}
+
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: [
+        "google",
+        "discord",
+        "email",
+        "x",
+        "phone",
+        "line",
+        "apple",
+        "facebook",
+        "telegram",
+      ],
+    },
+  }),
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("io.rabby"),
+  createWallet("io.zerion.wallet"),
+];
 
 export default function PROFILE({ allPosts: { edges }, preview }) {
 
   const account = useActiveAccount();
 
+  const { t } = useLocale();
   return (
     <motion.div
       initial={{ opacity: 0 }} // 初期状態
@@ -29,17 +62,61 @@ export default function PROFILE({ allPosts: { edges }, preview }) {
     >
       <Layout preview={preview}>
         <Head>
-          <title>農産物購入 | さどんでこNFT</title>
+          <title>{t.MYPAGETITLE}</title>
         </Head>
         <Container>
           <section className="flex-col md:flex-row flex items-center md:justify-between md:pt-8 pt-12 mb-16 md:mb-12">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8 md:text-left text-center">
-              農産物購入
+              {t.MYPAGE}
             </h1>
           </section>
           <section className="px-4">
-            <div className="text-center text-xl top-1/2 relative">
-              <p className="text-center">鋭意作成中です</p>
+            <div>
+              <div className="flex justify-end mb-5 md:hidden">
+                <ConnectButton
+                  client={client}
+                  wallets={wallets}
+                  connectModal={{ size: "compact" }}
+                />
+              </div>
+              {account && account.address ? (
+              <div className="justify-center mb-20">
+                <h2 className="mb-8s text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
+                  {t.MYPAGE_STATUS}
+                </h2>
+                <NftOwnershipCheck address={account.address} tokenIds={[BigInt(0)]} />
+                <h2 className="mb-8 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
+                  {t.MYPAGE_HISTORY}
+                </h2>
+                <div className="justify-center mb-10 sm:mb-1">
+                  <hr className="mb-10"></hr>
+                  <div className="flex flex-wrap sm:mb-0 lg:mb-10">
+                    <div className="w-full lg:w-1/2 md:pb-10 pb-0">
+                      <div className="pl-6 pt-0 md:pt-8">
+                        <div className="font-bold md:text-3xl text-2xl py-4 mx-auto">{t.NFT_NAME}</div>
+                        <p className="mt-6 md:text-xl text-lg">{t.NFT_DESCRIPTION}</p>
+                        <div className="font-bold md:text-3xl text-2xl py-4 mx-auto text-center mt-6"><NftCheckText address={account.address} tokenId={BigInt(0)} /></div>
+                      </div>
+                    </div>
+                    <div className="w-full lg:w-1/2">
+                      <div className="flex justify-center">
+                        <NftCheck address={account.address} tokenId={BigInt(0)} />
+                      </div>
+                    </div>
+                  </div>
+                  <hr className="mb-10"></hr>
+                  <h1 className="text-center text-4xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
+                    第2進化、最終進化は順次公開予定です。
+                  </h1>
+                </div>
+              </div>
+              ) : (
+                <div className="h-[70vh] max-md:h-[30vh] mx-auto">
+                  <div className="text-center text-xl top-1/2 relative">
+                    <p className="text-center">{t.MYPAGE_HISTORY}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         </Container>
@@ -64,6 +141,7 @@ export const NftOwnershipCheck = ({ address, tokenIds }: { address: string, toke
   const [isChecking, setIsChecking] = useState<boolean>(true);
   const [metadata, setMetadata] = useState<any>(null);
   const [isLoadingMetadata, setIsLoadingMetadata] = useState<boolean>(true);
+  const { t } = useLocale();
 
   useEffect(() => {
     const fetchMetadata = async () => {
@@ -102,27 +180,39 @@ export const NftOwnershipCheck = ({ address, tokenIds }: { address: string, toke
   }, [data, isLoadingBalance, isChecking, currentIndex, tokenIds]);
 
   if (isLoadingBalance || isLoadingMetadata) {
-    return <div>読み込み中...</div>;
+    return <div>{t.LOADING}</div>;
   }
 
   return (
     <div className="mb-20">
       {lastOwnedTokenId !== null ? (
-        <div className='flex flex-wrap justify-center'>
-          <div className="font-bold md:text-3xl text-2xl py-4 mx-auto"><NftName tokenId={lastOwnedTokenId} /></div>
-          <div className="flex justify-center"><NftImage tokenId={lastOwnedTokenId} /></div>
+        <div className="flex flex-wrap mb-10">
+          <div className="w-full lg:w-1/2 flex justify-center items-center">
+            <div className="flex flex-col sm:flex-row justify-center items-center">
+              <div className="font-bold md:text-5xl text-4xl py-4 mx-auto"><NftName tokenId={lastOwnedTokenId} /></div>
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2 mt-4">
+            <div className="flex justify-center"><NftImage tokenId={lastOwnedTokenId} /></div>
+          </div>
         </div>
       ) : (
-        <div className='flex flex-col flex-wrap justify-center'>
-          <div className="font-bold md:text-3xl text-2xl py-4 mx-auto">おんでこ見習い</div>
-          <div className="flex justify-center">
-            <MediaRenderer
-              client={client}
-              src={metadata?.image || 'fallback_image_path'}
-              alt="NFT Image"
-              height="80%"
-              width="80%"
-            />
+        <div className="flex flex-wrap mb-10">
+          <div className="w-full lg:w-1/2 flex justify-center items-center">
+            <div className="flex flex-col sm:flex-row justify-center items-center">
+              <div className="font-bold md:text-5xl text-4xl py-4 mx-auto">{t.MYPAGE_MINARAI}</div>
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2 mt-4">
+            <div className="flex justify-center">
+              <MediaRenderer
+                client={client}
+                src={metadata?.image || 'fallback_image_path'}
+                alt="NFT Image"
+                height="80%"
+                width="80%"
+              />
+            </div>
           </div>
         </div>
       )}
@@ -229,6 +319,8 @@ export const NftCheck = ({ address, tokenId }: { address: string, tokenId: bigin
 export const NftCheckText = ({ address, tokenId }: { address: string, tokenId: bigint }) => {
   const [ownsToken, setOwnsToken] = useState<boolean | null>(null);
 
+  const { t } = useLocale();
+
   const { data, isLoading } = useReadContract({
     contract,
     method: "function balanceOf(address account, uint256 id) view returns (uint256)",
@@ -246,15 +338,15 @@ export const NftCheckText = ({ address, tokenId }: { address: string, tokenId: b
   }, [data, isLoading]);
 
   if (isLoading) {
-    return <div>読み込み中...</div>;
+    return <div>{t.LOADING}</div>;
   }
 
   return (
     <>
       {ownsToken !== null && ownsToken ? (
-        <>購入済みです</>
+        <>{t.NFT_BUYED}</>
       ) : (
-        <>購入していません</>
+        <>{t.NFT_NOT_BUYED}</>
       )}
     </>
   );
@@ -267,6 +359,8 @@ export const ClaimButton = ({ address, tokenId }: { address: string, tokenId: bi
   const [isLoading, setIsLoading] = useState(true);
   const [supply, setSupply] = useState('');
   const [ownsToken, setOwnsToken] = useState<boolean | null>(null);
+
+  const { t } = useLocale();
 
   const { data: balanceOf, isLoading: balanceOfLoading } = useReadContract({
     contract,
@@ -350,13 +444,13 @@ export const ClaimButton = ({ address, tokenId }: { address: string, tokenId: bi
   const mintCost = BigInt(price) + BigInt(gasprice)
 
   if (isLoading) {
-    return <div>読み込み中...</div>;
+    return <div>{t.LOADING}</div>;
   }
 
   return (
     <div className="md:text-xl text-lg">
       {ownsToken !== null && ownsToken ? (
-        <p>購入済みです</p>
+        <p>{t.NFT_BUYED}</p>
       ) : (
         BigInt(supply) > 0 ? (
 
@@ -382,13 +476,13 @@ export const ClaimButton = ({ address, tokenId }: { address: string, tokenId: bi
                 console.error("Transaction error", error);
               }}
             >
-              NFTを購入する
+              {t.NFT_MINT}
             </TransactionButton>
           ) : (
-            <p>ウォレットに十分な資産がありません</p>
+            <p>{t.NFT_COST}</p>
           )
         ) : (
-          <p>購入上限に達しました</p>
+          <p>{t.NFT_AMOUNT}</p>
         )
       )}
     </div>
@@ -397,6 +491,7 @@ export const ClaimButton = ({ address, tokenId }: { address: string, tokenId: bi
 
 export const NftName = ({ tokenId }: { tokenId: bigint }) => {
   const [nft, setNft] = useState<any>(null);
+  const { t } = useLocale();
 
   useEffect(() => {
     const fetchNFT = async () => {
@@ -411,34 +506,14 @@ export const NftName = ({ tokenId }: { tokenId: bigint }) => {
   }, [tokenId]);
 
   if (!nft) {
-    return <>NFTデータの読み込み中</>;
+    return <>{t.LOADING}</>;
   }
   return <>{nft.metadata.name}</>;
 };
 
-export const NftDescription = ({ tokenId }: { tokenId: bigint }) => {
-  const [nft, setNft] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchNFT = async () => {
-      const nftData = await getNFT({
-        contract,
-        tokenId: tokenId,
-      });
-      setNft(nftData);
-    };
-
-    fetchNFT();
-  }, [tokenId]);
-
-  if (!nft) {
-    return <>NFTデータの読み込み中</>;
-  }
-  return <>{nft.metadata.description}</>;
-};
-
 export const NftImage = ({ tokenId }: { tokenId: bigint }) => {
   const [nft, setNft] = useState<any>(null);
+  const { t } = useLocale();
 
   useEffect(() => {
     const fetchNFT = async () => {
@@ -453,11 +528,11 @@ export const NftImage = ({ tokenId }: { tokenId: bigint }) => {
   }, [tokenId]);
 
   if (!nft) {
-    return <div>NFTデータの読み込み中...</div>;
+    return <div>{t.LOADING}</div>;
   }
 
   if (!nft.metadata.image) {
-    return <div>画像を読み込み中...</div>;
+    return <div>{t.LOADING}</div>;
   }
 
   return (
@@ -475,6 +550,7 @@ export const NftImage = ({ tokenId }: { tokenId: bigint }) => {
 
 export const NftSample = ({ tokenId }: { tokenId: bigint }) => {
   const [nft, setNft] = useState<any>(null);
+  const { t } = useLocale();
 
   useEffect(() => {
     const fetchNFT = async () => {
@@ -489,11 +565,11 @@ export const NftSample = ({ tokenId }: { tokenId: bigint }) => {
   }, [tokenId]);
 
   if (!nft) {
-    return <div>NFTデータの読み込み中...</div>;
+    return <div>{t.LOADING}</div>;
   }
 
   if (!nft.metadata.image) {
-    return <div>画像を読み込み中...</div>;
+    return <div>{t.LOADING}</div>;
   }
 
   return (
