@@ -1,4 +1,5 @@
 import Container from "./container";
+import Link from "next/link";
 import { EXAMPLE_PATH } from "../lib/constants";
 import { FaInstagram } from "react-icons/fa";
 
@@ -19,6 +20,15 @@ export default function Footer() {
             </a>
           </div>
         </div>
+        <div className="grid grid-cols-3 gap-3 md:px-20 px-4 pb-10">
+            <div><Link href="/">ホーム</Link></div>
+            <div><Link href="/about">プロジェクト説明</Link></div>
+            <div><Link href="/nft">NFT購入</Link></div>
+            <div><Link href="/shop">農産物購入</Link></div>
+            <div><Link href="/profile">プロフィール</Link></div>
+            <div><Link href="/tokusho">特定商取引法に基づく表記</Link></div>
+        </div>
+        <p className="text-end">copyright © sadondeko NFT project. all rights reserved.</p>
     </footer>
   );
 }

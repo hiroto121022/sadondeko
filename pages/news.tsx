@@ -64,7 +64,7 @@ export default function NEWS({ allPosts: { edges }, preview }) {
         />
         <meta
           property="og:image"
-          content="https://wordpress.sadondeko.com/wp-content/uploads/2024/07/sadondeko-2-edited.png"
+          content="https://www.sadondeko.com/wp-content/uploads/2024/07/sadondeko-2-edited.png"
         />
         <meta
           property="og:title"
@@ -100,7 +100,7 @@ export default function NEWS({ allPosts: { edges }, preview }) {
         />
         <meta
           property="twitter:image"
-          content="https://wordpress.sadondeko.com/wp-content/uploads/2024/07/sadondeko-2-edited.png"
+          content="https://www.sadondeko.com/wp-content/uploads/2024/07/sadondeko-2-edited.png"
         />
         <meta
           property="twitter:domain"

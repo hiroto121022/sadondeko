@@ -66,7 +66,7 @@ export default function ABOUT({ allPosts: { edges }, preview }) {
         />
         <meta
           property="og:image"
-          content="https://wordpress.sadondeko.com/wp-content/uploads/2024/07/sadondeko-2-edited.png"
+          content="https://www.sadondeko.com/wp-content/uploads/2024/07/sadondeko-2-edited.png"
         />
         <meta
           property="og:title"
@@ -74,7 +74,7 @@ export default function ABOUT({ allPosts: { edges }, preview }) {
         />
         <meta
           property="og:url"
-          content="https://sadondeko.com/about/"
+          content="https://www.sadondeko.com/about/"
         />
         <meta
           property="og:site_name"
@@ -98,11 +98,11 @@ export default function ABOUT({ allPosts: { edges }, preview }) {
         />
         <meta
           property="twitter:url"
-          content="https://sadondeko.com/about/"
+          content="https://www.sadondeko.com/about/"
         />
         <meta
           property="twitter:image"
-          content="https://wordpress.sadondeko.com/wp-content/uploads/2024/07/sadondeko-2-edited.png"
+          content="https://www.sadondeko.com/wp-content/uploads/2024/07/sadondeko-2-edited.png"
         />
         <meta
           property="twitter:domain"
@@ -117,36 +117,180 @@ export default function ABOUT({ allPosts: { edges }, preview }) {
           </h1>
         </section>
         <section className="px-4">
-          <h2 className="mt-6 mb-14 text-xl md:text-2xl leading-relaxed text-center">
-                  <span className="inline-block">佐渡の<ruby>鬼太鼓<rt>おんでこ</rt></ruby>に</span>
-                  <span className="inline-block">魅了された新潟大学生5人が</span>
-                  <span className="inline-block">「NFTアートで</span>
-                  <span className="inline-block"><ruby>鬼太鼓<rt>おんでこ</rt></ruby>を盛り上げたい」</span>
-                  <span className="inline-block">という思いから</span>
-                  <span className="inline-block">活動を開始</span>
-          </h2>
           <h2 className="mb-8 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
             プロジェクト概要
           </h2>
-
-          <p className="px-4 mb-6 leading-10 text-xl md:text-2xl">新潟大学生が、佐渡の伝統文化である「<ruby>鬼太鼓<rt>おんでこ</rt></ruby>」をデジタルアートに落とし込むことで、「<ruby>鬼太鼓<rt>おんでこ</rt></ruby>」の認知を広め、文化継承を実現するために活動しています。</p>
-          <p className="px-4 mb-6 leading-10 text-xl md:text-2xl">「さどんでこ」というチーム名は、「さど」+「おんでこ」を組み合わせて作りました。</p>
-          <p className="px-4 mb-8 leading-10 md:mb-12 text-xl md:text-2xl md:pr-8">佐渡には<ruby>鬼太鼓<rt>おんでこ</rt></ruby>を伝統として続けている村が100箇所ほどあり、それぞれ特有の鬼太鼓の色を持っています。現在は佐渡の鷲崎という村の皆さんと協力してプロジェクトを進めていますが、最終的には、<ruby>鬼太鼓<rt>おんでこ</rt></ruby>を行っている約100箇所すべての村の皆さんと協力して、それぞれの村に<ruby>鬼太鼓<rt>おんでこ</rt></ruby>アートが存在するような<ruby>鬼太鼓<rt>おんでこ</rt></ruby>アートの島「佐渡」を目指しています。</p>
+          <img 
+            src="https://www.sadondeko.com/wp-content/uploads/2024/08/鷲崎の方々との今までの交流-2.jpeg"
+            alt="交流"
+            className="mx-auto w-[70%]"
+          />
+          <p className="px-4 mb-6 leading-10 text-xl md:text-2xl">
+           <span className="inline-block">このプロジェクトは、</span>
+           <span className="inline-block">2023年9月から</span>
+           <span className="inline-block">2024年1月</span>
+           <span className="inline-block">にかけて</span>
+           <span className="inline-block">開催された</span>
+           <span className="inline-block">「第2回ローカルイノベーションプログラムin佐渡」</span>
+           <span className="inline-block">に参加した</span>
+           <span className="inline-block">新潟大学の</span>
+           <span className="inline-block">学生たち</span>
+           <span className="inline-block">によって</span>
+           <span className="inline-block">立ち上げられました。</span>
+           <span className="inline-block">このプログラム</span>
+           <span className="inline-block">を通じて、</span>
+           <span className="inline-block">私たちは</span>
+           <span className="inline-block">佐渡の</span>
+           <span className="inline-block">伝統文化</span>
+           <span className="inline-block">である</span>
+           <span className="inline-block">「鬼太鼓（おんでこ）」</span>
+           <span className="inline-block">に出会い、</span>
+           <span className="inline-block">その風貌、音、そして迫力ある動きに</span>
+           <span className="inline-block">その風貌、</span>
+           <span className="inline-block">音、</span>
+           <span className="inline-block">そして</span>
+           <span className="inline-block">迫力ある</span>
+           <span className="inline-block">動きに</span>
+           <span className="inline-block">魅了されました。</span>
+           <span className="inline-block">また、</span>
+           <span className="inline-block">鬼太鼓を</span>
+           <span className="inline-block">きっかけに</span>
+           <span className="inline-block">佐渡の</span>
+           <span className="inline-block">皆さんと</span>
+           <span className="inline-block">深く交流し、</span>
+           <span className="inline-block">佐渡を</span>
+           <span className="inline-block">佐渡を「第二の故郷」</span>
+           <span className="inline-block">と感じる</span>
+           <span className="inline-block">ようにも</span>
+           <span className="inline-block">なりました。</span>
+           <span className="inline-block">中でも、</span>
+           <span className="inline-block">佐渡の</span>
+           <span className="inline-block">鷲崎集落の</span>
+           <span className="inline-block">本田さん</span>
+           <span className="inline-block">には特に</span>
+           <span className="inline-block">親しくして</span>
+           <span className="inline-block">いただき、</span>
+           <span className="inline-block">本田さんから</span>
+           <span className="inline-block">「鷲崎の</span>
+           <span className="inline-block">鬼太鼓を</span>
+           <span className="inline-block">存続させる</span>
+           <span className="inline-block">ために</span>
+           <span className="inline-block">さまざまな</span>
+           <span className="inline-block">取り組みを</span>
+           <span className="inline-block">しているが、</span>
+           <span className="inline-block">なかなか</span>
+           <span className="inline-block">上手く</span>
+           <span className="inline-block">いかない。</span>
+           <span className="inline-block">若い</span>
+           <span className="inline-block">人たちから</span>
+           <span className="inline-block">新しい</span>
+           <span className="inline-block">アイデアを</span>
+           <span className="inline-block">もらいたい」</span>
+           <span className="inline-block">とのお話を</span>
+           <span className="inline-block">いただきました。</span>
+           <span className="inline-block">私たちは、</span>
+           <span className="inline-block">鬼太鼓</span>
+           <span className="inline-block">を通して</span>
+           <span className="inline-block">多くの</span>
+           <span className="inline-block">楽しい</span>
+           <span className="inline-block">思い出を</span>
+           <span className="inline-block">いただいた</span>
+           <span className="inline-block">本田さん</span>
+           <span className="inline-block">に感謝を</span>
+           <span className="inline-block">込めて、</span>
+           <span className="inline-block">新潟の</span>
+           <span className="inline-block">大学生</span>
+           <span className="inline-block">として</span>
+           <span className="inline-block">鬼太鼓</span>
+           <span className="inline-block">の継承</span>
+           <span className="inline-block">に向けて</span>
+           <span className="inline-block">何か</span>
+           <span className="inline-block">できる</span>
+           <span className="inline-block">ことは</span>
+           <span className="inline-block">ないか</span>
+           <span className="inline-block">と考え</span>
+           <span className="inline-block">ました。</span>
+           <span className="inline-block">同じ思いを抱くチームメンバーとともに</span>
+           <span className="inline-block">アイデアを出し合い、</span> 
+           <span className="inline-block">有識者へのヒアリングや</span>
+           <span className="inline-block">佐渡の皆さんとの話し合いを</span>
+           <span className="inline-block">重ねた結果、</span>
+           <span className="inline-block">鬼太鼓の魅力が詰まった</span>
+           <span className="inline-block">デジタルアートを制作し、</span>
+           <span className="inline-block">それを広めることで、</span>
+           <span className="inline-block">より多くの人に</span>
+           <span className="inline-block">鬼太鼓を知ってもらえる</span>
+           <span className="inline-block">のではないか</span>
+           <span className="inline-block">と考えました。</span>
+           <span className="inline-block">また、デジタルアートが</span>
+           <span className="inline-block">現地で「進化する」</span>
+           <span className="inline-block">という機能を持たせることで、</span>
+           <span className="inline-block">そのデジタルアートを</span>
+           <span className="inline-block">手にした人々が</span>
+           <span className="inline-block">佐渡を訪れ、</span>
+           <span className="inline-block">実際の鬼太鼓を</span>
+           <span className="inline-block">見に来るきっかけも</span>
+           <span className="inline-block">生まれると</span>
+           <span className="inline-block">期待しています。</span>
+           <span className="inline-block">佐渡には</span>
+           <span className="inline-block">100を超える</span>
+           <span className="inline-block">集落があり、</span>
+           <span className="inline-block">それぞれが</span>
+           <span className="inline-block">特有の鬼太鼓を</span>
+           <span className="inline-block">伝統として</span>
+           <span className="inline-block">受け継いでいます。</span>
+           <span className="inline-block">現在は</span>
+           <span className="inline-block">鷲崎集落の皆さん</span>
+           <span className="inline-block">と協力して</span>
+           <span className="inline-block">プロジェクトを</span>
+           <span className="inline-block">進めていますが、</span>
+           <span className="inline-block">将来的には</span>
+           <span className="inline-block">佐渡のすべての集落に</span>
+           <span className="inline-block">それぞれの</span>
+           <span className="inline-block">鬼太鼓アートが存在し、</span>
+           <span className="inline-block">佐渡が</span>
+           <span className="inline-block">「鬼太鼓アートの島」</span>
+           <span className="inline-block">となるような</span>
+           <span className="inline-block">未来を目指しています。</span>
+           <span className="inline-block">鬼太鼓の</span>
+           <span className="inline-block">文化継承に向け、</span>
+           <span className="inline-block">全力で</span>
+           <span className="inline-block">取り組んでまいります！</span>
+          </p>
           <h2 className="mb-8 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
             デジタルアートの特徴
           </h2>
+          <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
+           <span className="inline-block">実際に</span>
+           <span className="inline-block">佐渡に</span>
+           <span className="inline-block">訪れることで、</span>
+           <span className="inline-block">動きと</span>
+           <span className="inline-block">音が</span>
+           <span className="inline-block">追加され</span>
+           <span className="inline-block">アートが</span>
+           <span className="inline-block">進化します</span>
+          </p>
           <img 
-            src="https://wordpress.sadondeko.com/wp-content/uploads/2024/10/画像5.png"
+            src="https://www.sadondeko.com/wp-content/uploads/2024/10/画像1.png"
             alt="進化"
             className="mx-auto w-[100%]"
           />
-          <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
-            佐渡を訪れることで、<span className="font-bold">デジタルアートが進化</span>がします。「現地に行くことでアートに音と動きが付く面白さ」をきっかけに、実際に佐渡を訪れ鬼太鼓やそれを営む佐渡の皆さんの魅力に触れていただければ嬉しいです。
+          <p className="px-8 mb-6 leading-10 text-lg md:text-xl">
+           <span className="inline-block">＊現在は</span>
+           <span className="inline-block">進化</span>
+           <span className="inline-block">バージョン</span>
+           <span className="inline-block">「おんでこ名人」</span>
+           <span className="inline-block">を制作中</span>
+           <span className="inline-block">です。</span>
           </p>
-          <p className="px-8 mb-6 leading-10 text-lg md:text-xl">＊現在は進化バージョン「おんでこ名人」を制作中です。</p>
-      <h2 className="mb-8 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
-          デジタルアートを所有することで<span className="font-bold">あなたが鬼太鼓に</span>貢献できること
-      </h2>
+
+            <section className="mb-18"></section>        
+        <h2 className="mb-8 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
+           <span className="inline-block">あなたが</span>
+           <span className="inline-block">鬼太鼓に</span>
+           <span className="inline-block">貢献できる</span>
+           <span className="inline-block">こと</span>
+        </h2>
         <p className="px-8 mb-6 leading-10 text-xl md:text-2xl">
           <span className="inline-block">①鬼太鼓アートを</span>
           <span className="inline-block">友達に</span>
@@ -175,8 +319,8 @@ export default function ABOUT({ allPosts: { edges }, preview }) {
            <span className="inline-block">アートを</span>
            <span className="inline-block">あなたが</span>
            <span className="inline-block">持っているだけで、</span>
-           <span className="inline-block"><span className="font-bold">伝統文化が</span></span>
-           <span className="inline-block"><span className="font-bold">受け継がれていく。</span></span>
+           <span className="inline-block">伝統文化が</span>
+           <span className="inline-block">受け継がれていく。</span>
         </p>
           </section>
 

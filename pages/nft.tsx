@@ -77,7 +77,7 @@ export default function NFT({ allPosts: { edges }, preview }) {
         />
         <meta
           property="og:image"
-          content="https://wordpress.sadondeko.com/wp-content/uploads/2024/07/2つ目-1024x1024.jpg"
+          content="https://www.sadondeko.com/wp-content/uploads/2024/07/2つ目-1024x1024.jpg"
         />
         <meta
           property="og:title"
@@ -85,7 +85,7 @@ export default function NFT({ allPosts: { edges }, preview }) {
         />
         <meta
           property="og:url"
-          content="https://sadondeko.com/nft/"
+          content="https://nft.sadondeko.com/nft/"
         />
         <meta
           property="og:site_name"
@@ -113,7 +113,7 @@ export default function NFT({ allPosts: { edges }, preview }) {
         />
         <meta
           property="twitter:image"
-          content="https://wordpress.sadondeko.com/wp-content/uploads/2024/07/2つ目-1024x1024.jpg"
+          content="https://www.sadondeko.com/wp-content/uploads/2024/07/2つ目-1024x1024.jpg"
         />
         <meta
           property="twitter:domain"

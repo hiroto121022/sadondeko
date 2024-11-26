@@ -24,27 +24,27 @@ const FooterButton = () => {
   const links = [
     {
       id: 1,
-      link: "https://sadondeko.com/news",
+      link: "/news",
       name: "お知らせ",
     },
     {
       id: 2,
-      link: "https://sadondeko.com/about",
+      link: "/about",
       name: "プロジェクト説明",
     },
     {
       id: 3,
-      link: "https://sadondeko.com/nft",
+      link: "/nft",
       name: "NFT購入",
     },
     {
       id: 4,
-      link: "https://sadondeko.com/shop",
+      link: "/shop",
       name: "農産物購入",
     },
     {
       id: 5,
-      link: "https://sadondeko.com/profile",
+      link: "/profile",
       name: "プロフィール",
     },
   ];

@@ -47,27 +47,27 @@ const Navbar = () => {
   const links = [
     {
       id: 1,
-      link: "https://sadondeko.com/news",
+      link: "/news",
       name: "お知らせ",
     },
     {
       id: 2,
-      link: "https://sadondeko.com/about",
+      link: "/about",
       name: "プロジェクト説明",
     },
     {
       id: 3,
-      link: "https://sadondeko.com/nft",
+      link: "/nft",
       name: "NFT購入",
     },
     {
       id: 4,
-      link: "https://sadondeko.com/shop",
+      link: "/shop",
       name: "農産物購入",
     },
     {
       id: 5,
-      link: "https://sadondeko.com/profile",
+      link: "/profile",
       name: "プロフィール",
     },
   ];
@@ -114,7 +114,7 @@ const Navbar = () => {
         </h1>
       </div>
       <div className="md:hidden hover:bg-skyblue h-12 px-2">
-        <Link href="https://sadondeko.com/profile" className="flex flex-col justify-center items-center hover:text-black">
+        <Link href="/profile" className="flex flex-col justify-center items-center hover:text-black">
           <FaUsers size={30} />
           <div className="text-[9px]">プロフィール</div>
         </Link>

@@ -11,6 +11,10 @@ const { protocol, hostname, port, pathname } = new URL(
 
 /** @type {import('next').NextConfig} */
 module.exports = {
+  i18n: {
+    locales: ['en', 'ja'],
+    defaultLocale: 'ja',
+  },
   images: {
     remotePatterns: [
       {
@@ -19,7 +23,7 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'wordpress.sadondeko.com',
+        hostname: 'www.sadondeko.com',
       }
     ],
   },
