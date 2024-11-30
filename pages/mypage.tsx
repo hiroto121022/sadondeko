@@ -113,7 +113,7 @@ export default function PROFILE({ allPosts: { edges }, preview }) {
               ) : (
                 <div className="h-[70vh] max-md:h-[30vh] mx-auto">
                   <div className="text-center text-xl top-1/2 relative">
-                    <p className="text-center">{t.MYPAGE_HISTORY}</p>
+                    <p className="text-center">{t.MYPAGE_WALLET}</p>
                   </div>
                 </div>
               )}
