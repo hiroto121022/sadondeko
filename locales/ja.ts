@@ -1,3 +1,5 @@
+import EVOLVE from "../pages/evolve";
+
 export default {
     SUBTITLE: "デジタルアートで佐渡の鬼太鼓の継承を目指す",
     HOME: "ホーム",
@@ -45,6 +47,18 @@ export default {
     MYPAGE_HISTORY: "NFT購入履歴",
     MYPAGE_WALLET: "ウォレットが接続されていません。右上ボタンからウォレットを接続してください。",
     MYPAGE_MINARAI: "おんでこ見習い",
-    OUT_OF_RANGE: "範囲外です",
+    OUT_OF_RANGE: "特定の範囲外です",
     NFT_EVOLVE: "NFTを進化する",
+    EVOLVE_TITLE: "進化",
+    EVOLVE_heading_1: "進化の条件",
+    EVOLVE_MASTER_1: "おめでとうございます！すでに進化済みです。",
+    EVOLVE_MASTER_2: "進化したNFTを見る",
+    EVOLVE_MINARAI_1: "NFTを所持していません。NFTアートを購入してください。",
+    EVOLVE_MINARAI_2: "NFTを購入する",
+    EVOLVE_FELLOW_1: "Ondeko ArtのNFTを所持しています",
+    EVOLVE_FELLOW_2: "鷲崎の範囲内です",
+    EVOLVE_FELLOW_3: "進化可能です！下のボタンから進化しましょう。（ガス代がかかります）",
+    EVOLVE_FELLOW_4: "進化する！",
+    EVOLVE_FELLOW_5: "申し訳ありません。ウォレットにNFTをミントするガス代が足りません。",
+    EVOLVE_FELLOW_6: "鷲崎に行って再びこのページを確認しよう！",   
 }

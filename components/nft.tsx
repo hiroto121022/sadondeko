@@ -2,7 +2,7 @@ import useLocale from "../components/locale"
 import { useState, useEffect } from "react";
 import { client } from "../lib/client";
 import { contract } from "../lib/contract";
-import { FaArrowRight, FaProjectDiagram, FaEthereum } from "react-icons/fa";
+import { FaArrowRight, FaProjectDiagram, FaEthereum, FaCheck, FaTimes } from "react-icons/fa";
 import { estimateGasCost } from "thirdweb";
 import { useActiveAccount ,useWalletBalance, TransactionButton, useReadContract,  MediaRenderer } from "thirdweb/react";
 import { defineChain } from "thirdweb/chains";
@@ -83,7 +83,7 @@ export const NftCheck = ({ address, tokenId }: { address: string, tokenId: bigin
 };
 
 // addressがtokenId:1のNFTを所持しているかどうか確認し、所持している場合は表示する
-export const NftEvolve = ({ address }: { address: string }) => {
+export const NftEvolveCheck = ({ address }: { address: string }) => {
   const [ownsToken, setOwnsToken] = useState<boolean | null>(null);
 
   const { t } = useLocale();
@@ -127,13 +127,111 @@ export const NftEvolve = ({ address }: { address: string }) => {
         </div>
       ) : (
         <div className="flex justify-center mt-10">
-          <a href="/about" className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+          <a href="/evolve" className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
             <FaEthereum size={30} className="text-sadondeko" />
             <span className="">{t.NFT_EVOLVE}</span>
             <FaArrowRight size={30} className="text-sadondeko" />
           </a> 
         </div>
       )}
+    </div>
+  );
+};
+
+// addressがtokenIds[0], tokenIds[1]を所持しているか順番に確認し、tokenIds[0]を持っていた場合は、進化を促す
+export const NftEvolve = ({ address, tokenIds }:{address: string, tokenIds: bigint[]}) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [lastOwnedTokenId, setLastOwnedTokenId] = useState<bigint | null>(null);
+  const [isChecking, setIsChecking] = useState<boolean>(true);
+  const [metadata, setMetadata] = useState<any>(null);
+  const [isLoadingMetadata, setIsLoadingMetadata] = useState<boolean>(true);
+  const { t } = useLocale();
+  
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      try {
+        const metadata = await getContractMetadata({ contract });
+        setMetadata(metadata);
+      } catch (error) {
+        console.error("Error fetching metadata:", error);
+      } finally {
+        setIsLoadingMetadata(false);
+      }
+    };
+
+    fetchMetadata();
+  }, []);
+
+  const { data, isLoading: isLoadingBalance } = useReadContract({
+    contract,
+    method: "function balanceOf(address account, uint256 id) view returns (uint256)",
+    params: [address, tokenIds[currentIndex]],
+  });
+
+  useEffect(() => {
+    if (!isLoadingBalance && isChecking) {
+      if (data && BigInt(data) > BigInt(0)) {
+        setLastOwnedTokenId(tokenIds[currentIndex]);
+        if (currentIndex < tokenIds.length - 1) {
+          setCurrentIndex(currentIndex + 1);
+        } else {
+          setIsChecking(false); // 全てのトークンIDをチェックしたので終了
+        }
+      } else {
+        setIsChecking(false); // 所持していないトークンIDが見つかったので終了
+      }
+    }
+  }, [data, isLoadingBalance, isChecking, currentIndex, tokenIds]);
+
+  if (isLoadingBalance || isLoadingMetadata) {
+    return <div>{t.LOADING}</div>;
+  }
+
+  return (
+    <div className="mt-10">
+      {lastOwnedTokenId !== null ? (
+        <>
+          {lastOwnedTokenId === tokenIds[0] && (
+            <>
+            <div className="flex justify-center mt-10">
+              <div className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <FaCheck size={30} className="text-sadondeko" />
+                <span className="">Ondeko ArtのNFTを所持しています</span>
+              </div>
+            </div>
+            <ClaimButtonGeo address={address} tokenId={BigInt(1)} targetLatitude={38.325172913436504} targetLongitude={138.49978940397367} radius={1.5}/>
+            </>
+          )}
+          {lastOwnedTokenId === tokenIds[1] && (
+            <>
+              <div className="font-bold md:text-3xl text-2xl py-4 mx-auto text-center mt-6">
+                {t.EVOLVE_MASTER_1}
+              </div>
+              <div className="flex justify-center mt-10">
+                <a href="/mypage" className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                  <FaEthereum size={30} className="text-sadondeko" />
+                  <span className="">{t.EVOLVE_MASTER_2}</span>
+                  <FaArrowRight size={30} className="text-sadondeko" />
+                </a> 
+              </div>
+            </>
+          )}
+        </>
+      ) : (
+        <>
+        <div className="font-bold md:text-3xl text-2xl py-4 mx-auto text-center mt-6">
+          {t.EVOLVE_MINARAI_1}
+        </div>
+        <div className="flex justify-center mt-10">
+          <a href="/" className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+            <FaEthereum size={30} className="text-sadondeko" />
+            <span className="">{t.EVOLVE_MINARAI_2}</span>
+            <FaArrowRight size={30} className="text-sadondeko" />
+          </a> 
+        </div>
+      </>
+      )}
+
     </div>
   );
 };
@@ -490,35 +588,87 @@ export const ClaimButtonGeo = ({
         <p>{t.NFT_BUYED}</p>
       ) : (
         BigInt(supply) > 0 ? (
-          BigInt(balance) > mintCost ? (
-            isWithinRange ? (
-              <TransactionButton
-                transaction={() => {
-                  const tx = claimTo({
-                    contract,
-                    to: address,
-                    tokenId: tokenId,
-                    quantity: BigInt(1),
-                  });
-                  return tx;
-                }}
-                onTransactionSent={(result) => {
-                  console.log("Transaction submitted", result.transactionHash);
-                }}
-                onTransactionConfirmed={(receipt) => {
-                  console.log("Transaction confirmed", receipt.transactionHash);
-                }}
-                onError={(error) => {
-                  console.error("Transaction error", error);
-                }}
-              >
-                {t.NFT_MINT}
-              </TransactionButton>
+          isWithinRange ? (
+            BigInt(balance) > mintCost ? (
+              <>
+                <div className="flex justify-center mt-10">
+                  <div className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <FaCheck size={30} className="text-sadondeko" />
+                    <span className="">{t.EVOLVE_FELLOW_1}</span>
+                  </div>
+                </div>
+                <div className="flex justify-center mt-10">
+                  <div className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <FaCheck size={30} className="text-sadondeko" />
+                    <span className="">{t.EVOLVE_FELLOW_2}</span>
+                  </div>
+                </div>
+                <div className="flex justify-center mt-10">
+                  <div className="font-bold md:text-3xl text-2xl py-4 mx-auto text-center">
+                    {t.EVOLVE_FELLOW_3}
+                  </div>
+                </div>
+                <div className="flex justify-center mt-10">
+                  <TransactionButton
+                    transaction={() => {
+                      const tx = claimTo({
+                        contract,
+                        to: address,
+                        tokenId: tokenId,
+                        quantity: BigInt(1),
+                      });
+                      return tx;
+                    }}
+                    onTransactionSent={(result) => {
+                      console.log("Transaction submitted", result.transactionHash);
+                    }}
+                    onTransactionConfirmed={(receipt) => {
+                      console.log("Transaction confirmed", receipt.transactionHash);
+                    }}
+                    onError={(error) => {
+                      console.error("Transaction error", error);
+                    }}
+                  >
+                    {t.NFT_MINT}
+                  </TransactionButton>
+                </div>  
+              </>
             ) : (
-              <p>{t.OUT_OF_RANGE}</p>
+              <>
+                <div className="flex justify-center mt-10">
+                  <div className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <FaCheck size={30} className="text-sadondeko" />
+                    <span className="">{t.EVOLVE_FELLOW_1}</span>
+                  </div>
+                </div>
+                <div className="flex justify-center mt-10">
+                  <div className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <FaCheck size={30} className="text-sadondeko" />
+                    <span className="">{t.EVOLVE_FELLOW_2}</span>
+                  </div>
+                </div>
+                <div className="flex justify-center mt-10">
+                  <div className="font-bold md:text-3xl text-2xl py-4 mx-auto text-center">
+                    {t.EVOLVE_FELLOW_5}
+                  </div>
+                </div>
+              </>
             )
           ) : (
-            <p>{t.NFT_COST}</p>
+            <>
+              <div className="flex justify-center mt-10">
+                <div className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                  <FaTimes size={30} className="text-sadondeko" />
+                  <span className="">{t.OUT_OF_RANGE}</span>
+                </div>
+              </div>
+              <div className="flex justify-center mt-10">
+                <div className="font-bold md:text-3xl text-2xl py-4 mx-auto text-center">
+                  {t.EVOLVE_FELLOW_6}
+                </div>
+              </div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25039.932298274827!2d138.48027474647247!3d38.32602679847786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8ccacabde8c3f7%3A0xb99b475571700a1a!2z44CSOTUyLTMyMDUg5paw5r2f55yM5L2Q5rih5biC6bey5bSO!5e0!3m2!1sja!2sjp!4v1732539576406!5m2!1sja!2sjp" width="100%" style={{ border: 0, aspectRatio: '4 / 3' }} loading="lazy"></iframe>
+            </>
           )
         ) : (
           <p>{t.NFT_AMOUNT}</p>
