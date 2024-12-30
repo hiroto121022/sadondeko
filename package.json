@@ -3,7 +3,6 @@
   "scripts": {
     "dev": "next dev -p 3333",
     "build": "next build",
-    "postbuild": "next-sitemap",
     "start": "next start -p 3000",
     "lint": "next lint"
   },

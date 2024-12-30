@@ -1,15 +1,8 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { FaNewspaper, FaProjectDiagram, FaMoneyBill, FaStore, FaRegFlag, FaUsers  } from "react-icons/fa";
-import en from "../locales/en";
-import ja from "../locales/ja";
+import { FaProjectDiagram, FaUsers  } from "react-icons/fa";
 import { useRouter } from "next/router";
-
-export const useLocale = () => {
-  const { locale } = useRouter();
-  const t = locale === "en" ? en : ja;
-  return { locale, t };
-}
+import useLocale from "./locale";
 
 const FooterButton = () => {
   const router = useRouter();
@@ -28,8 +21,7 @@ const FooterButton = () => {
     if (nav) {
       setShow(true);
     } else {
-      // アニメーションを適用する前に少し待つ
-      const timer = setTimeout(() => setShow(false), 490); // 500msはアニメーションの長さ
+      const timer = setTimeout(() => setShow(false), 490); // 490msはアニメーションの長さ
       return () => clearTimeout(timer);
     }
   }, [nav]);
@@ -37,24 +29,6 @@ const FooterButton = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  const links = [
-    {
-      id: 1,
-      link: "/",
-      name: t.HOME,
-    },
-    {
-      id: 2,
-      link: "/about",
-      name: t.ABOUT,
-    },
-    {
-      id: 3,
-      link: "/mypage",
-      name: t.MYPAGE,
-    },
-  ];
 
   return (
     <div className="z-9 md:hidden flex justify-between items-center w-full h-12 sticky bottom-0 px-4 text-white bg-sadondeko nav">

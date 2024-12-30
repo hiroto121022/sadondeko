@@ -2,41 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FaBars, FaTimes, FaUsers } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { client } from "../lib/client";
-import { inAppWallet, createWallet } from "thirdweb/wallets";
+import { wallets } from "../lib/wallets"
 import { ConnectButton } from "thirdweb/react";
-import en from "../locales/en";
-import ja from "../locales/ja";
-
-const wallets = [
-  inAppWallet({
-    auth: {
-      options: [
-        "google",
-        "discord",
-        "email",
-        "x",
-        "phone",
-        "line",
-        "apple",
-        "facebook",
-        "telegram",
-      ],
-    },
-  }),
-  createWallet("io.metamask"),
-  createWallet("com.coinbase.wallet"),
-  createWallet("me.rainbow"),
-  createWallet("io.rabby"),
-  createWallet("io.zerion.wallet"),
-];
-
-export const useLocale = () => {
-  const { locale } = useRouter();
-  const t = locale === "en" ? en : ja;
-  return { locale, t };
-}
+import useLocale from "./locale";
 
 const Navbar = () => {
   const router = useRouter();

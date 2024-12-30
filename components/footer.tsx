@@ -1,6 +1,3 @@
-import Container from "./container";
-import Link from "next/link";
-import { EXAMPLE_PATH } from "../lib/constants";
 import { FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
@@ -20,7 +17,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <p className="text-end">copyright © sadondeko NFT project. all rights reserved.</p>
+        <p className="text-end">copyright © Sadondeko NFT project. all rights reserved.</p>
     </footer>
   );
 }

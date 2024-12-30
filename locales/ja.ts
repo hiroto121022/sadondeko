@@ -45,4 +45,6 @@ export default {
     MYPAGE_HISTORY: "NFT購入履歴",
     MYPAGE_WALLET: "ウォレットが接続されていません。右上ボタンからウォレットを接続してください。",
     MYPAGE_MINARAI: "おんでこ見習い",
+    OUT_OF_RANGE: "範囲外です",
+    NFT_EVOLVE: "NFTを進化する",
 }

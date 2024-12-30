@@ -45,4 +45,6 @@ export default {
     MYPAGE_HISTORY: "NFT Mint History",
     MYPAGE_WALLET: "Wallet is not connected. Please connect the wallet using the upper right button.",
     MYPAGE_MINARAI: "Ondeko Apprentice",
+    OUT_OF_RANGE: "Out of range.",
+    NFT_EVOLVE: "Evolving the NFT",
 }
