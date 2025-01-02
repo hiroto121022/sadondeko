@@ -2,9 +2,9 @@ import useLocale from "../components/locale"
 import { useState, useEffect } from "react";
 import { client } from "../lib/client";
 import { contract } from "../lib/contract";
-import { FaArrowRight, FaProjectDiagram, FaEthereum, FaCheck, FaTimes } from "react-icons/fa";
+import { FaArrowRight, FaEthereum, FaCheck, FaTimes } from "react-icons/fa";
 import { estimateGasCost } from "thirdweb";
-import { useActiveAccount ,useWalletBalance, TransactionButton, useReadContract,  MediaRenderer } from "thirdweb/react";
+import { useWalletBalance, TransactionButton, useReadContract,  MediaRenderer } from "thirdweb/react";
 import { defineChain } from "thirdweb/chains";
 import { getNFT, getClaimConditionById, claimTo } from "thirdweb/extensions/erc1155";
 import { getContractMetadata } from "thirdweb/extensions/common";
@@ -196,7 +196,7 @@ export const NftEvolve = ({ address, tokenIds }:{address: string, tokenIds: bigi
             <div className="flex justify-center mt-10">
               <div className="inline-flex items-center justify-center justify-between gap-4 p-5 text-xl font-medium text-slate-800 rounded-lg bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                 <FaCheck size={30} className="text-sadondeko" />
-                <span className="">Ondeko ArtのNFTを所持しています</span>
+                <span className="">{t.EVOLVE_FELLOW_1}</span>
               </div>
             </div>
             <ClaimButtonGeo address={address} tokenId={BigInt(1)} targetLatitude={38.325172913436504} targetLongitude={138.49978940397367} radius={1.5}/>

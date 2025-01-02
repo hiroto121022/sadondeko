@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
 import { client } from "../lib/client";
-import { contract } from "../lib/contract";
 import { wallets } from "../lib/wallets"
-import { ConnectButton, useReadContract, useActiveAccount } from "thirdweb/react";
-import { getClaimConditionById } from "thirdweb/extensions/erc1155";
+import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import Head from "next/head";
 import Container from "../components/container";
 import Layout from "../components/layout";
 import Animation from "../components/animation";
 import useLocale from "../components/locale";
-import { NftCheck, NftOwnershipCheck, NftCheckText, NftName, NftDesription, ClaimButtonGeo, NftEvolveCheck } from "../components/nft";
+import { NftCheck, NftOwnershipCheck, NftCheckText, NftEvolveCheck } from "../components/nft";
 
 export default function PROFILE({ preview }) {
 

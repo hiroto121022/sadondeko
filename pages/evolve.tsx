@@ -1,9 +1,6 @@
-import { useState, useEffect } from "react";
 import { client } from "../lib/client";
-import { contract } from "../lib/contract";
 import { wallets } from "../lib/wallets"
-import { ConnectButton, useReadContract, useActiveAccount } from "thirdweb/react";
-import { getClaimConditionById } from "thirdweb/extensions/erc1155";
+import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import Head from "next/head";
 import Container from "../components/container";
 import Layout from "../components/layout";

@@ -7,7 +7,6 @@ import useLocale from "../components/locale"
 import Animation from "../components/animation";
 import { PriceComponent, NftCheck, ClaimButton, NftSample } from "../components/nft";
 import { FaArrowRight, FaProjectDiagram, FaEthereum } from "react-icons/fa";
-import { useEffect } from "react";
 import { wallets } from "../lib/wallets"
 import { client } from "../lib/client";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
@@ -16,20 +15,6 @@ export default function Index({ preview }) {
 
   const { t } = useLocale();
   const account = useActiveAccount();
-
-  useEffect(() => {
-    // アプリの読み込みが完了した後の処理
-    const nftContents = document.querySelector<HTMLElement>('.nft-contents');
-
-    if (nftContents) {
-      // 特定の条件をチェック
-      const conditionMet = true; // ここに条件を設定
-
-      if (conditionMet) {
-        nftContents.style.display = 'block';
-      }
-    }
-  }, []);  
 
   // トップの画像
   const top_image = (
