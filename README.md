@@ -1,4 +1,4 @@
-# Sadondeko NFT Project https://nft.sadondeko.com React NextJS Site
+# Sadondeko NFT Project https://nft.sadondeko.com React+Nextjs Site
 ![Image](https://github.com/user-attachments/assets/062a2d93-4f24-4cc0-94f2-00cd003ff2ec)
 ## Sadondeko NFT Project
 佐渡の鬼太鼓おんでこに魅了された新潟大学生5人が、「NFTアートで鬼太鼓おんでこを盛り上げたい」という思いから活動が始まりました。新潟大学生が佐渡の伝統文化「鬼太鼓おんでこ」をデジタルアート（NFT）に落とし込むことで、「鬼太鼓おんでこ」の認知を広め、文化継承を実現するために活動しています。
@@ -8,7 +8,7 @@ Five Niigata University students fascinated by Sado's Ondeko wanted to “enlive
 Ondeko Digital Art (NFT) is a digital artwork that expresses Sado's traditional “Ondeko” culture. Furthermore, the art incorporates a mechanism that allows the art to evolve as visitors visit Sado Island, providing an opportunity for visitors to actually visit Sado Island and experience Ondeko.
 ## 使用技術
 * React
-* NextJs
+* Nextjs
 * Thirdweb API
 * Wordpress REST API
 * PM2
