@@ -1,5 +1,3 @@
-import EVOLVE from "../pages/evolve";
-
 export default {
     SUBTITLE: "デジタルアートで佐渡の鬼太鼓の継承を目指す",
     HOME: "ホーム",
