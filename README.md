@@ -1,4 +1,5 @@
 # Sadondeko NFT Project https://nft.sadondeko.com React NextJS Site
+![Image](https://github.com/user-attachments/assets/062a2d93-4f24-4cc0-94f2-00cd003ff2ec)
 ## Sadondeko NFT Project
 佐渡の鬼太鼓おんでこに魅了された新潟大学生5人が、「NFTアートで鬼太鼓おんでこを盛り上げたい」という思いから活動が始まりました。新潟大学生が佐渡の伝統文化「鬼太鼓おんでこ」をデジタルアート（NFT）に落とし込むことで、「鬼太鼓おんでこ」の認知を広め、文化継承を実現するために活動しています。
 Five Niigata University students fascinated by Sado's Ondeko wanted to “enliven Ondeko with NFT art” and started this activity. By incorporating Sado's traditional Ondeko into digital art (NFT), Niigata University students are working to spread awareness of Ondeko and realize its cultural transmission.
